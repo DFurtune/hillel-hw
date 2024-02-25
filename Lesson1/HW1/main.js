@@ -12,17 +12,17 @@ console.log(name);
 //Task 2
 alert("Мене звати " + name + ", мені " + age + " років.");
 
-//Task3
+// //Task3
 name = prompt("Введіть своє ім'я:");
 age = prompt("Скільки Вам років?");
 alert(`Мене звати ${name}, мені ${age} років.`);
 
-//Task 4
+// //Task 4
 let number1;
 let number2;
 
-number1 = +prompt("Введіть перше число:");
-number2 = +prompt("Введіть друге число:");
+number1 = prompt("Введіть перше число:");
+number2 = prompt("Введіть друге число:");
 
 let sum = number1 + number2;
 let sub = number1 - number2;
