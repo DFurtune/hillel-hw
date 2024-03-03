@@ -1,43 +1,34 @@
-"use strict";
+// "use strict";
 
-//LEVEL1
+// // //LEVEL1
 //Task1-1
 function sum(num1, num2) {
-    return num1 + num2
+  return num1 + num2;
 }
 
-//Task1-2
+// // //Task1-2
 function multBy5(num) {
-    let result = num*5
-    console.log(`5 * ${num} = ${result}`)
+  let result = num * 5;
+  console.log(`5 * ${num} = ${result}`);
 }
 
-//Task1-3
+// //Task1-3
 function max(num1, num2) {
-    if(num1 > num2){
-        return num1
-    } else {
-        return num2
-    }
+  return num1 > num2 ? num1 : num2;
 }
 
-//LEVEL2
-//Task2
+// //LEVEL2
+// //Task2
 function pow(x = 3, n = 2) {
-    let result = 1
-    for (let i = 0; i < n; i++) {
-        result *= x
-    }
-    return result;
+  let result = 1;
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+  return result;
 }
 
-//Task3
-//Не зовсім впевнений, що це найкраще рішення, але працює
-function sumOrConcatination(value1, value2) {
-  if (typeof value1 === "undefined" && typeof value2 === "undefined") {
-    return console.log(30);
-  }
-
+// //Task3
+function sumOrConcatination(value1 = 30, value2 = 0) {
   if (typeof value1 === "string" || typeof value2 === "string") {
     console.log("Результат конкатенації:" + value1 + value2);
   } else if (typeof value1 === "number" && typeof value2 === "number") {
@@ -47,8 +38,8 @@ function sumOrConcatination(value1, value2) {
   }
 }
 
-//LEVEL3
-//Task4
+// //LEVEL3
+// //Task4
 function fib(n) {
   let x = 1;
   let y = 1;
@@ -59,4 +50,3 @@ function fib(n) {
   }
   return y;
 }
-console.log(fib(9));
