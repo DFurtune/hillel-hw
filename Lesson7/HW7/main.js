@@ -44,7 +44,7 @@ let employee = {
 };
 
 for (const key in employee) {
-  if (typeof key == Number) {
+  if (typeof key === "number") {
     employee[key] += 2;
   }
 }
@@ -67,6 +67,7 @@ employee2.showInfo();
 function sumInput() {
   let inputNumber;
   let numberArray = [];
+  let sum = 0;
 
   while (true) {
     inputNumber = prompt("Enter some numbers");
@@ -75,7 +76,6 @@ function sumInput() {
     }
     numberArray.push(inputNumber);
   }
-  let sum = 0;
 
   for (let i = 0; i < numberArray.length; i++) {
     sum += Number(numberArray[i]);
@@ -175,7 +175,7 @@ let {
     {
       authors: [
         {
-          books: [, secondKidrukBookName],
+          books: [, { title: secondKidrukBookName }],
         },
         {
           books: [{ year: yearOfPublicationKobzar }],

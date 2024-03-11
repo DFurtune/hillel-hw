@@ -33,9 +33,11 @@ function generateRandomFloat(n) {
 //Level2
 //Task2
 function isPalindrom(str) {
+  str = str.replaceAll(" ", "");
+  str = str.toLowerCase();
   let j = str.length - 1;
 
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length / 2; i++) {
     if (str[i] != str[j]) {
       return false;
     }
@@ -43,6 +45,7 @@ function isPalindrom(str) {
   }
   return true;
 }
+console.log(isPalindrom("І розморозь зором зорі "));
 
 //Task3
 function sumOfNumbers(number) {
