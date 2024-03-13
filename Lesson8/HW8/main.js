@@ -1,7 +1,9 @@
 //Level1
 //Task1
 let array = [2, 7, 6, 3, 9, 1, 4, 5, 8, 10];
-console.log(...array);
+array.forEach((item) => {
+  console.log(item);
+});
 
 let arrayMulBy5 = array.map((item) => item * 5);
 console.log(arrayMulBy5);
