@@ -28,14 +28,17 @@ showInfoOfEmployee2("$");
 
 //Level2
 //Task2
-let calculator = {};
+let calculator = {
+  num1: 0,
+  num2: 0,
+};
 
-calculator.read = function (num1, num2) {
+calculator.read = function (num1 = 0, num2 = 0) {
   this.num1 = num1;
   this.num2 = num2;
 };
 
-calculator.sum = function () {
+calculator.sum = function (num1 = this.num1, num2 = this.num2) {
   return this.num1 + this.num2;
 };
 
