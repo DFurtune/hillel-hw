@@ -64,17 +64,16 @@ class TodoList {
     this.todos = [];
   }
 
-  show() {
-    let counter = 0;
-    this.todos.forEach((item) => console.log(`${++counter}. ${item}`));
+  #show() {
+    this.todos.forEach((item, index) => console.log(`${index + 1}. ${item}`));
   }
   addTask(task) {
     this.todos.push(task);
-    this.show();
+    this.#show();
   }
   removeTask(task) {
     this.todos = this.todos.filter((item) => item !== task);
-    this.show();
+    this.#show();
   }
 }
 
