@@ -42,22 +42,21 @@ delete actor.gender;
 console.log(actor);
 
 //1-4
-class Animal {
-  constructor(voice) {
-    this.voice = voice;
-  }
-  say() {
+function Animal(voice) {
+  this.voice = voice;
+
+  this.say = function () {
     return this.voice;
-  }
+  };
+
+  Object.defineProperties(this, {
+    say: {
+      enumerable: false,
+    },
+  });
 }
 const dog = new Animal("Гав!");
 console.log(dog.say());
-
-Object.defineProperties(dog, {
-  say: {
-    enumerable: false,
-  },
-});
 
 for (let key in dog) {
   console.log(key); // voice (say - не перераховується)
@@ -71,6 +70,8 @@ let car1 = {
   [Symbol.toPrimitive](hint) {
     if (hint === "default") {
       return this.price;
+    } else {
+      return this.model;
     }
   },
 };
@@ -81,11 +82,15 @@ let car2 = {
   [Symbol.toPrimitive](hint) {
     if (hint === "default") {
       return this.price;
+    } else {
+      return this.model;
     }
   },
 };
 
 console.log(car1 + car2);
+alert(car1);
+alert(car2);
 
 //Task3
 let actor2 = {
@@ -95,11 +100,11 @@ let actor2 = {
   nationality: "British",
   lastFilm: "Venom: Let There Be Carnage",
 };
-function cloneObject(obj, key1, key2) {
+function cloneObject(obj, ...keys) {
   let cloneObj = {};
 
   for (const key in obj) {
-    if (key !== key1 && key !== key2) {
+    if (!keys.includes(key)) {
       cloneObj[key] = obj[key];
     }
   }
