@@ -1,3 +1,4 @@
+"use strict";
 //Level1
 //1-1
 function print(start, end) {
@@ -81,7 +82,7 @@ const sales = {
 };
 
 function sumProfit(sales) {
-  sum = sales.profit;
+  let sum = sales.profit;
 
   for (const key of sales.clients) {
     sum += sumProfit(key);
