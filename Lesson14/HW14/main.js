@@ -10,7 +10,7 @@ function print(start, end) {
 
 //1-2
 function factorial(num) {
-  if (num === 0 || num === 1) {
+  if (num <= 1) {
     return 1;
   } else {
     return num * factorial(num - 1);
@@ -24,7 +24,7 @@ function createMultBy(num) {
   return function multiply(arg) {
     if (typeof arg === "number") {
       return num * arg;
-    } else if (typeof arg === "function") {
+    } else {
       return createMultBy(num)(arg());
     }
   };
@@ -95,18 +95,19 @@ console.log(sumProfit(sales));
 //Level3
 //Task3
 function memoization(fn) {
-  const cache = new Map();
+  const cache = {};
 
   return function (...args) {
     const key = JSON.stringify(args);
 
-    if (cache.has(key)) {
-      return cache.get(key);
+    if (cache[key]) {
+      console.log("from cash");
+      return cache[key];
+    } else {
+      const result = fn(...args);
+      cache[key] = result;
+      return result;
     }
-
-    const result = fn.apply(this, args);
-    cache.set(key.result);
-    return result;
   };
 }
 
