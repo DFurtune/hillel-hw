@@ -22,9 +22,11 @@ repeat(222);
 // //1-3
 function repeatRecursion(msg) {
   console.log(msg);
-  setTimeout(() => {
+  let timerId = setTimeout(() => {
     repeatRecursion(msg);
   }, 2000);
+
+  repeatRecursion.timerId = timerId;
 }
 
 repeatRecursion(333);
@@ -74,10 +76,8 @@ class Timer {
 
   start() {
     this.timer = setInterval(() => {
-      if (!this.paused) {
-        this.counter++;
-        console.log(this.counter);
-      }
+      this.counter++;
+      console.log(this.counter);
     }, 1000);
   }
 
@@ -115,29 +115,26 @@ setTimeout(() => {
   newTimer.show();
 }, 9000);
 
-//Level 3
-//Task 4
+// Level 3
+// Task 4
 
 function cook(customers) {
   for (const customer in customers) {
     const orders = customers[customer];
-    let totalOrders = orders.length;
-    let completedOrders = 0;
-    let orderNames = [];
+    let maxTime = 0;
 
     orders.forEach((order) => {
-      setTimeout(() => {
-        orderNames.push(order.name);
-        completedOrders++;
-        if (completedOrders === totalOrders) {
-          console.log(
-            `Шановний відвідувач, ${customer}, ваше замовлення готове: ${orderNames.join(
-              ", "
-            )}. Смачного!`
-          );
-        }
-      }, order.time);
+      maxTime = Math.max(maxTime, order.time);
     });
+
+    setTimeout(() => {
+      const orderNames = orders.map((order) => order.name);
+      console.log(
+        `Шановний відвідувач, ${customer}, ваше замовлення готове: ${orderNames.join(
+          ", "
+        )}. Смачного!`
+      );
+    }, maxTime);
   }
 }
 
