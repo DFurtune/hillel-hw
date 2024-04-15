@@ -71,7 +71,6 @@ class Timer {
   constructor() {
     this.counter = 0;
     this.timer = null;
-    this.paused = false;
   }
 
   start() {
@@ -88,7 +87,6 @@ class Timer {
   }
 
   pause() {
-    this.paused = true;
     clearInterval(this.timer);
     console.log("Зупинено показ чисел");
   }
