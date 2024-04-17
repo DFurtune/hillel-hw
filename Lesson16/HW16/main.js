@@ -48,17 +48,18 @@ const secondPromise = Promise.resolve("Результат 2");
 const firstPromise = Promise.resolve("Результат 1");
 const thirdPromise = Promise.resolve("Результат 3");
 
-showResults(promise1, promise2, promise3);
+showResults(secondPromise, firstPromise, thirdPromise);
 
 //1-5
 function showFirst(promise1, promise2, promise3) {
-  Promise.race([promise1, promise2, promise3])
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  Promise.allSettled([promise1, promise2, promise3]).then((results) => {
+    for (const result of results) {
+      if (result.status === "fulfilled") {
+        console.log(result.value);
+        return;
+      }
+    }
+  });
 }
 
 const firstPromise1 = new Promise((resolve) =>
